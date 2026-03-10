@@ -1,6 +1,6 @@
 window.Tracking = {
     config: {
-        endpoint: 'https://script.google.com/macros/s/AKfycbx905XGfDwd3Rqh-jf6tSV/usercopy'
+        endpoint: https://script.google.com/macros/s/AKfycbxDdUgCRFtitXRP7NWILgbVFRciid8InrJt3SdKPFtxsZCk-0s5BJww6ljYL27QGxcz_g/exec
     },
     track: function(linkName, linkType, description) {
         var data = {
