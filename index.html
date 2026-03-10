@@ -106,27 +106,21 @@
         </div>
     </div>
 
-    <!-- ANALYTICS -->
-    <script src="js/utm.js"></script>
-    <script src="js/tracking.js"></script>
-    <script src="js/analytics.js"></script>
+    <!-- TRACKING SIMPLES -->
+    <script src="js/tracking_simples.js"></script>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            Analytics.trackPageView();
-        });
+        // Configurar a URL do Google Apps Script
+        Tracking.config.endpoint = 'COLOQUE_AQUI_A_URL_DO_SEU_GOOGLE_APPS_SCRIPT';
 
+        // Rastrear cliques nos links
         document.querySelectorAll('.link-item').forEach(item => {
             item.addEventListener('click', function(e) {
                 const title = this.querySelector('h3').textContent;
                 const description = this.querySelector('p').textContent;
-                Analytics.trackEvent('link_click', {
-                    button_name: title,
-                    description: description,
-                    link_type: this.classList.contains('premium') ? 'premium' : this.classList.contains('social') ? 'social' : 'free'
-                });
+                const linkType = this.classList.contains('premium') ? 'premium' : this.classList.contains('social') ? 'social' : 'free';
+
+                Tracking.track(title, linkType, description);
             });
         });
     </script>
-</body>
-</html>
