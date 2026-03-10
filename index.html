@@ -11,77 +11,101 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <!-- HEADER COM FOTO -->
-        <header class="header-foto">
-            <div class="foto-bg" style="background-image: url('assets/promo-banner.jpg');">
-                <div class="overlay"></div>
-                <div class="profile-content">
-                    <div class="profile-pic-container">
-                        <img src="assets/profile.jpg" alt="Poli" class="profile-pic">
-                    </div>
-                    <h1 class="name">Poli</h1>
-                    <p class="title">Criadora de conteúdo | Lifestyle</p>
-                    <p class="bio">24 anos, mineirinha e amo viajar!<br>Faço aqueles vídeos pra gente grande 🍑</p>
-                    <p class="cta">Quer conversar comigo agora ou me chamar pra jantar?</p>
-                </div>
+    <!-- HERO COM FOTO GRANDE -->
+    <div class="hero-section" style="background-image: url('assets/promo-banner.jpg');">
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content">
+            <!-- CÍRCULO COM FOTO -->
+            <div class="profile-badge">
+                <img src="assets/profile.jpg" alt="Poli" class="profile-badge-img">
             </div>
-        </header>
 
-        <!-- SEÇÃO DE LINKS -->
-        <main class="main-content">
-            <section class="links-section">
-                <a href="https://privacy.com.br/checkout/barbiepretha" target="_blank" class="link-card premium">
-                    <div class="link-icon">🔐</div>
-                    <div class="link-details">
-                        <h3>PRIVACY</h3>
-                        <p>50% OFF - Restam 3 vagas!</p>
-                    </div>
-                </a>
-
-                <a href="https://t.me/PoliVIP_bot" target="_blank" class="link-card premium">
-                    <div class="link-icon">✈️</div>
-                    <div class="link-details">
-                        <h3>TELEGRAM VIP</h3>
-                        <p>50% OFF - Restam 5 vagas!</p>
-                    </div>
-                </a>
-
-                <a href="https://onlyfans.com/impoliferreira" target="_blank" class="link-card premium">
-                    <div class="link-icon">OF</div>
-                    <div class="link-details">
-                        <h3>ONLYFANS</h3>
-                        <p>50% OFF - Restam 5 vagas!</p>
-                    </div>
-                </a>
-
-                <a href="https://t.me/+UK1ygrfRnHE4ODc5" target="_blank" class="link-card free">
-                    <div class="link-icon">✈️</div>
-                    <div class="link-details">
-                        <h3>TELEGRAM FREE</h3>
-                        <p>Canal público - Atualizações</p>
-                    </div>
-                </a>
-
-                <a href="https://privacy.com.br/checkout/barbieprethafree" target="_blank" class="link-card free">
-                    <div class="link-icon">🔐</div>
-                    <div class="link-details">
-                        <h3>PRIVACY FREE</h3>
-                        <p>Acesso gratuito com limite</p>
-                    </div>
-                </a>
-
-                <a href="https://www.instagram.com/soupoli.ferreira" target="_blank" class="link-card social">
-                    <div class="link-icon">📱</div>
-                    <div class="link-details">
-                        <h3>INSTAGRAM</h3>
-                        <p>Siga meu perfil</p>
-                    </div>
-                </a>
-            </section>
-        </main>
+            <h1 class="hero-name">Poli</h1>
+            <p class="hero-title">Criadora de conteúdo | Lifestyle</p>
+            <p class="hero-bio">24 anos, mineirinha e amo viajar!<br>Faço aqueles vídeos pra gente grande 🍑</p>
+            <p class="hero-cta">Quer conversar comigo agora ou me chamar pra jantar?</p>
+        </div>
     </div>
 
+    <!-- LINKS -->
+    <div class="links-container">
+        <div class="links-wrapper">
+            <!-- PRIVACY VIP -->
+            <a href="https://privacy.com.br/checkout/barbiepretha" target="_blank" class="link-item premium">
+                <div class="link-avatar">
+                    <span>🔐</span>
+                </div>
+                <div class="link-content">
+                    <h3>PRIVACY</h3>
+                    <p>50% OFF - Restam 3 vagas!</p>
+                </div>
+                <div class="link-arrow">›</div>
+            </a>
+
+            <!-- TELEGRAM VIP -->
+            <a href="https://t.me/PoliVIP_bot" target="_blank" class="link-item premium">
+                <div class="link-avatar">
+                    <span>✈️</span>
+                </div>
+                <div class="link-content">
+                    <h3>TELEGRAM VIP</h3>
+                    <p>50% OFF - Restam 5 vagas!</p>
+                </div>
+                <div class="link-arrow">›</div>
+            </a>
+
+            <!-- ONLYFANS -->
+            <a href="https://onlyfans.com/impoliferreira" target="_blank" class="link-item premium">
+                <div class="link-avatar">
+                    <span>OF</span>
+                </div>
+                <div class="link-content">
+                    <h3>ONLYFANS</h3>
+                    <p>50% OFF - Restam 5 vagas!</p>
+                </div>
+                <div class="link-arrow">›</div>
+            </a>
+
+            <!-- TELEGRAM FREE -->
+            <a href="https://t.me/+UK1ygrfRnHE4ODc5" target="_blank" class="link-item">
+                <div class="link-avatar">
+                    <span>✈️</span>
+                </div>
+                <div class="link-content">
+                    <h3>TELEGRAM</h3>
+                    <p>Canal público - Atualizações</p>
+                </div>
+                <div class="link-arrow">›</div>
+            </a>
+
+            <!-- PRIVACY FREE -->
+            <a href="https://privacy.com.br/checkout/barbieprethafree" target="_blank" class="link-item">
+                <div class="link-avatar">
+                    <span>🔐</span>
+                </div>
+                <div class="link-content">
+                    <h3>PRIVACY FREE</h3>
+                    <p>Acesso gratuito com limite</p>
+                </div>
+                <div class="link-arrow">›</div>
+            </a>
+
+            <!-- INSTAGRAM -->
+            <a href="https://www.instagram.com/soupoli.ferreira" target="_blank" class="link-item social">
+                <div class="link-avatar">
+                    <span>📱</span>
+                </div>
+                <div class="link-content">
+                    <h3>INSTAGRAM</h3>
+                    <p>Siga meu perfil</p>
+                </div>
+                <div class="link-arrow">›</div>
+            </a>
+        </div>
+    </div>
+
+    <!-- ANALYTICS -->
     <script src="js/utm.js"></script>
     <script src="js/tracking.js"></script>
     <script src="js/analytics.js"></script>
@@ -91,12 +115,14 @@
             Analytics.trackPageView();
         });
 
-        document.querySelectorAll('.link-card').forEach(card => {
-            card.addEventListener('click', function(e) {
+        document.querySelectorAll('.link-item').forEach(item => {
+            item.addEventListener('click', function(e) {
                 const title = this.querySelector('h3').textContent;
+                const description = this.querySelector('p').textContent;
                 Analytics.trackEvent('link_click', {
                     button_name: title,
-                    link_type: this.classList.contains('premium') ? 'premium' : this.classList.contains('free') ? 'free' : 'social'
+                    description: description,
+                    link_type: this.classList.contains('premium') ? 'premium' : this.classList.contains('social') ? 'social' : 'free'
                 });
             });
         });
