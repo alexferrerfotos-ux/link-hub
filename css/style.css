@@ -1,14 +1,17 @@
+/* ============================================
+   RESET E VARIÁVEIS - DESIGN KEROLAY
+   ============================================ */
+
 :root {
-    --primary: #FF6B9D;
-    --secondary: #C2185B;
-    --accent: #1976D2;
-    --background: #FFFFFF;
-    --surface: #F5F5F5;
-    --text-primary: #1F2937;
-    --text-secondary: #6B7280;
+    --primary-pink: #FF6B9D;
+    --dark-pink: #C2185B;
+    --light-gray: #F5F5F5;
+    --dark-gray: #333333;
+    --text-dark: #2C2C2C;
     --text-light: #FFFFFF;
-    --border: #E5E7EB;
-    --shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    --border-light: #E5E7EB;
+    --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --shadow-medium: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
 
 * {
@@ -17,216 +20,382 @@
     box-sizing: border-box;
 }
 
-html { scroll-behavior: smooth; }
+html {
+    scroll-behavior: smooth;
+}
 
 body {
-    font-family: 'Poppins', sans-serif;
-    background-color: var(--background);
-    color: var(--text-primary);
-    line-height: 1.6;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background-color: #FFFFFF;
+    color: var(--text-dark);
+    line-height: 1.5;
 }
 
-.container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 0;
-}
+/* ============================================
+   HERO SECTION (FOTO GRANDE)
+   ============================================ */
 
-.header-foto {
+.hero-section {
     position: relative;
     width: 100%;
-    min-height: 550px;
-    overflow: hidden;
-}
-
-.foto-bg {
-    position: relative;
-    width: 100%;
-    height: 100%;
+    height: 70vh;
+    min-height: 500px;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
 }
 
-.overlay {
+.hero-overlay {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(2px);
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.25) 100%);
+    z-index: 1;
 }
 
-.profile-content {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+.hero-content {
+    position: relative;
+    z-index: 2;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    padding: 40px 20px;
+    justify-content: center;
+    padding: 20px;
     text-align: center;
     color: var(--text-light);
 }
 
-.profile-pic-container {
-    margin-bottom: 30px;
-}
-
-.profile-pic {
-    width: 140px;
-    height: 140px;
+/* CÍRCULO COM FOTO */
+.profile-badge {
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
-    border: 6px solid white;
-    object-fit: cover;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    background: white;
+    border: 5px solid white;
+    overflow: hidden;
+    margin-bottom: 30px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+    animation: bounceIn 0.8s ease-out;
 }
 
-.name {
-    font-size: 36px;
+.profile-badge-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-name {
+    font-size: 48px;
     font-weight: 700;
     margin-bottom: 8px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    letter-spacing: -0.5px;
 }
 
-.title {
+.hero-title {
     font-size: 16px;
     font-weight: 600;
     margin-bottom: 12px;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    opacity: 0.95;
 }
 
-.bio {
+.hero-bio {
     font-size: 14px;
     font-weight: 400;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
     line-height: 1.6;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    max-width: 320px;
+    opacity: 0.9;
 }
 
-.cta {
+.hero-cta {
     font-size: 13px;
     font-weight: 400;
-    color: rgba(255, 255, 255, 0.95);
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    color: rgba(255, 255, 255, 0.85);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     max-width: 300px;
     line-height: 1.5;
+    opacity: 0.85;
 }
 
-.main-content {
-    padding: 30px 20px;
+/* ============================================
+   LINKS CONTAINER
+   ============================================ */
+
+.links-container {
+    background: white;
+    padding: 0;
 }
 
-.links-section {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
+.links-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px 16px;
 }
 
-.link-card {
+/* ============================================
+   LINK ITEMS (ESTILO KEROLAY)
+   ============================================ */
+
+.link-item {
     display: flex;
     align-items: center;
-    gap: 20px;
-    padding: 16px 18px;
-    background: var(--surface);
-    border-radius: 12px;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+    background: white;
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
     text-decoration: none;
-    color: var(--text-primary);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    border: 2px solid transparent;
-    position: relative;
-    overflow: hidden;
+    color: var(--text-dark);
+    transition: all 0.2s ease;
+    cursor: pointer;
+    gap: 12px;
 }
 
-.link-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow);
-    border-color: var(--primary);
+.link-item:active {
+    transform: scale(0.98);
 }
 
-.link-card.premium {
-    border-left: 4px solid var(--primary);
+.link-item:hover {
+    box-shadow: var(--shadow-medium);
+    border-color: var(--primary-pink);
+    transform: translateY(-2px);
 }
 
-.link-card.premium:hover {
-    background: rgba(255, 107, 157, 0.08);
+.link-item.premium {
+    border-left: 4px solid var(--primary-pink);
 }
 
-.link-card.free {
-    border-left: 4px solid var(--accent);
+.link-item.premium:hover {
+    background: rgba(255, 107, 157, 0.04);
 }
 
-.link-card.free:hover {
-    background: rgba(25, 118, 210, 0.08);
+.link-item.social {
+    border-left: 4px solid var(--dark-pink);
 }
 
-.link-card.social {
-    border-left: 4px solid var(--secondary);
+.link-item.social:hover {
+    background: rgba(194, 24, 91, 0.04);
 }
 
-.link-card.social:hover {
-    background: rgba(194, 24, 91, 0.08);
-}
-
-.link-icon {
+/* AVATAR REDONDO */
+.link-avatar {
     width: 50px;
     height: 50px;
-    border-radius: 10px;
+    min-width: 50px;
+    border-radius: 50%;
+    background: var(--light-gray);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 24px;
+    font-size: 22px;
     flex-shrink: 0;
-    background: white;
-    font-weight: 700;
+    box-shadow: var(--shadow-light);
 }
 
-.link-details {
+.link-item.premium .link-avatar {
+    background: rgba(255, 107, 157, 0.1);
+}
+
+.link-item.social .link-avatar {
+    background: rgba(194, 24, 91, 0.1);
+}
+
+/* CONTEÚDO DO LINK */
+.link-content {
     flex: 1;
+    text-align: left;
 }
 
-.link-details h3 {
-    font-size: 15px;
+.link-content h3 {
+    font-size: 14px;
     font-weight: 700;
-    margin-bottom: 3px;
-    color: var(--text-primary);
+    margin-bottom: 2px;
+    color: var(--text-dark);
 }
 
-.link-details p {
-    font-size: 13px;
-    color: var(--text-secondary);
+.link-content p {
+    font-size: 12px;
+    color: #999999;
     font-weight: 400;
 }
 
-@media (max-width: 640px) {
-    .header-foto {
-        min-height: 480px;
+/* SETA DO LADO */
+.link-arrow {
+    font-size: 20px;
+    color: var(--primary-pink);
+    font-weight: 300;
+    opacity: 0.6;
+    transition: all 0.2s ease;
+}
+
+.link-item:hover .link-arrow {
+    opacity: 1;
+    transform: translateX(4px);
+}
+
+/* ============================================
+   ANIMAÇÕES
+   ============================================ */
+
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.link-item {
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+.link-item:nth-child(1) { animation-delay: 0.05s; }
+.link-item:nth-child(2) { animation-delay: 0.1s; }
+.link-item:nth-child(3) { animation-delay: 0.15s; }
+.link-item:nth-child(4) { animation-delay: 0.2s; }
+.link-item:nth-child(5) { animation-delay: 0.25s; }
+.link-item:nth-child(6) { animation-delay: 0.3s; }
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 768px) {
+    .hero-section {
+        height: 65vh;
+        min-height: 450px;
     }
 
-    .profile-pic {
-        width: 110px;
-        height: 110px;
-        border-width: 5px;
+    .profile-badge {
+        width: 100px;
+        height: 100px;
+        border-width: 4px;
+        margin-bottom: 20px;
     }
 
-    .name {
-        font-size: 28px;
+    .hero-name {
+        font-size: 40px;
     }
 
-    .link-card {
-        padding: 14px 16px;
-        gap: 16px;
+    .hero-title {
+        font-size: 15px;
     }
 
-    .link-icon {
-        width: 45px;
-        height: 45px;
-        font-size: 20px;
+    .hero-bio {
+        font-size: 13px;
+        max-width: 280px;
     }
+
+    .hero-cta {
+        font-size: 12px;
+        max-width: 270px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-section {
+        height: 60vh;
+        min-height: 400px;
+    }
+
+    .profile-badge {
+        width: 90px;
+        height: 90px;
+        border-width: 3px;
+        margin-bottom: 16px;
+    }
+
+    .hero-name {
+        font-size: 32px;
+    }
+
+    .hero-title {
+        font-size: 13px;
+    }
+
+    .hero-bio {
+        font-size: 12px;
+        max-width: 260px;
+        margin-bottom: 12px;
+    }
+
+    .hero-cta {
+        font-size: 11px;
+        max-width: 250px;
+    }
+
+    .links-wrapper {
+        padding: 16px 12px;
+    }
+
+    .link-item {
+        padding: 12px 14px;
+        margin-bottom: 10px;
+        gap: 10px;
+    }
+
+    .link-avatar {
+        width: 44px;
+        height: 44px;
+        font-size: 18px;
+    }
+
+    .link-content h3 {
+        font-size: 13px;
+    }
+
+    .link-content p {
+        font-size: 11px;
+    }
+
+    .link-arrow {
+        font-size: 18px;
+    }
+}
+
+/* ============================================
+   SCROLLBAR
+   ============================================ */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--light-gray);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-pink);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--dark-pink);
 }
