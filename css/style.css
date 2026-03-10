@@ -1,98 +1,77 @@
-/* ============================================
-   RESET E VARIÁVEIS - DESIGN KEROLAY
-   ============================================ */
-
-:root {
-    --primary-pink: #FF6B9D;
-    --dark-pink: #C2185B;
-    --light-gray: #F5F5F5;
-    --dark-gray: #333333;
-    --text-dark: #2C2C2C;
-    --text-light: #FFFFFF;
-    --border-light: #E5E7EB;
-    --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.08);
-    --shadow-medium: 0 8px 20px rgba(0, 0, 0, 0.12);
-}
-
+/* RESET */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
+html, body {
     height: 100%;
+    width: 100%;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
+/* BODY COM IMAGEM DE FUNDO */
 body {
     font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    min-height: 100vh;
     color: #2C2C2C;
     line-height: 1.5;
     overflow: hidden;
-}
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* ============================================
-   PAGE CONTAINER (FOTO FULL-SCREEN)
-   ============================================ */
-
-.page-container {
+/* OVERLAY ESCURO SOBRE A IMAGEM */
+.overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    z-index: -1;
-}
-
-.page-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.2) 100%);
-    z-index: 0;
-}
-
-/* ============================================
-   HERO SECTION (CONTEÚDO)
-   ============================================ */
-
-.hero-section {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.15) 100%);
     z-index: 1;
+    pointer-events: none;
 }
 
-.hero-content {
+/* CONTAINER COM TUDO FLUTUANDO JUNTO */
+.floating-container {
     position: relative;
-    z-index: 2;
+    z-index: 10;
+    width: 100%;
+    max-width: 600px;
+    padding: 40px 20px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* HERO CONTENT (PERFIL + TEXTO) */
+.hero-content {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 20px;
     text-align: center;
-    color: var(--text-light);
+    color: white;
+    margin-bottom: 30px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 40px 30px;
+    border-radius: 20px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* CÍRCULO COM FOTO */
+/* FOTO CIRCULAR */
 .profile-badge {
     width: 120px;
     height: 120px;
@@ -147,98 +126,62 @@ body {
     opacity: 0.85;
 }
 
-/* ============================================
-   LINKS CONTAINER (SOBRE A IMAGEM)
-   ============================================ */
-
-.links-container {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    background: linear-gradient(to top, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
-    padding: 0;
-    z-index: 10;
-    max-height: 60vh;
-    overflow-y: auto;
-}
-
+/* LINKS WRAPPER */
 .links-wrapper {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px 16px 30px 16px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
-/* ============================================
-   LINK ITEMS (ESTILO KEROLAY)
-   ============================================ */
-
+/* LINK ITEM - TRANSPARENTE COM BLUR */
 .link-item {
     display: flex;
     align-items: center;
     padding: 14px 16px;
-    margin-bottom: 12px;
-    background: white;
-    border: 1px solid var(--border-light);
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 8px;
     text-decoration: none;
-    color: var(--text-dark);
+    color: #2C2C2C;
     transition: all 0.2s ease;
     cursor: pointer;
     gap: 12px;
-}
-
-.link-item:active {
-    transform: scale(0.98);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 }
 
 .link-item:hover {
-    box-shadow: var(--shadow-medium);
-    border-color: var(--primary-pink);
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    border-color: #FF6B9D;
     transform: translateY(-2px);
 }
 
 .link-item.premium {
-    border-left: 4px solid var(--primary-pink);
-}
-
-.link-item.premium:hover {
-    background: rgba(255, 107, 157, 0.04);
+    border-left: 4px solid #FF6B9D;
 }
 
 .link-item.social {
-    border-left: 4px solid var(--dark-pink);
+    border-left: 4px solid #C2185B;
 }
 
-.link-item.social:hover {
-    background: rgba(194, 24, 91, 0.04);
-}
-
-/* AVATAR REDONDO */
+/* AVATAR */
 .link-avatar {
     width: 50px;
     height: 50px;
     min-width: 50px;
     border-radius: 50%;
-    background: var(--light-gray);
+    background: #F5F5F5;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 22px;
     flex-shrink: 0;
-    box-shadow: var(--shadow-light);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-.link-item.premium .link-avatar {
-    background: rgba(255, 107, 157, 0.1);
-}
-
-.link-item.social .link-avatar {
-    background: rgba(194, 24, 91, 0.1);
-}
-
-/* CONTEÚDO DO LINK */
+/* CONTEÚDO */
 .link-content {
     flex: 1;
     text-align: left;
@@ -248,7 +191,7 @@ body {
     font-size: 14px;
     font-weight: 700;
     margin-bottom: 2px;
-    color: var(--text-dark);
+    color: #2C2C2C;
 }
 
 .link-content p {
@@ -257,10 +200,10 @@ body {
     font-weight: 400;
 }
 
-/* SETA DO LADO */
+/* SETA */
 .link-arrow {
     font-size: 20px;
-    color: var(--primary-pink);
+    color: #FF6B9D;
     font-weight: 300;
     opacity: 0.6;
     transition: all 0.2s ease;
@@ -271,10 +214,7 @@ body {
     transform: translateX(4px);
 }
 
-/* ============================================
-   ANIMAÇÕES
-   ============================================ */
-
+/* ANIMAÇÕES */
 @keyframes bounceIn {
     0% {
         opacity: 0;
@@ -311,14 +251,33 @@ body {
 .link-item:nth-child(5) { animation-delay: 0.25s; }
 .link-item:nth-child(6) { animation-delay: 0.3s; }
 
-/* ============================================
-   RESPONSIVE DESIGN
-   ============================================ */
+/* SCROLLBAR */
+::-webkit-scrollbar {
+    width: 8px;
+}
 
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 107, 157, 0.6);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #C2185B;
+}
+
+/* RESPONSIVE */
 @media (max-width: 768px) {
-    .hero-section {
-        height: 65vh;
-        min-height: 450px;
+    .floating-container {
+        padding: 30px 15px;
+    }
+
+    .hero-content {
+        padding: 30px 20px;
+        margin-bottom: 20px;
     }
 
     .profile-badge {
@@ -348,9 +307,14 @@ body {
 }
 
 @media (max-width: 480px) {
-    .hero-section {
-        height: 60vh;
-        min-height: 400px;
+    .floating-container {
+        padding: 20px 10px;
+    }
+
+    .hero-content {
+        padding: 25px 15px;
+        margin-bottom: 15px;
+        border-radius: 15px;
     }
 
     .profile-badge {
@@ -379,13 +343,8 @@ body {
         max-width: 250px;
     }
 
-    .links-wrapper {
-        padding: 16px 12px;
-    }
-
     .link-item {
         padding: 12px 14px;
-        margin-bottom: 10px;
         gap: 10px;
     }
 
@@ -406,25 +365,4 @@ body {
     .link-arrow {
         font-size: 18px;
     }
-}
-
-/* ============================================
-   SCROLLBAR
-   ============================================ */
-
-::-webkit-scrollbar {
-    width: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background: var(--light-gray);
-}
-
-::-webkit-scrollbar-thumb {
-    background: var(--primary-pink);
-    border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: var(--dark-pink);
 }
