@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gratuito | Poli</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <header class="header">
+            <a href="index.html" class="back-button">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+            </a>
+            <h1>Conteúdo Gratuito</h1>
+        </header>
+
+        <!-- CONTEÚDO -->
+        <main class="main-content">
+            <section class="links-section">
+                <div class="free-badge">💚 Acesso Livre</div>
+
+                <div class="links-list">
+                    <!-- TELEGRAM FREE -->
+                    <a href="https://t.me/+UK1ygrfRnHE4ODc5" target="_blank" class="link-button link-telegram" id="btn_telegram_free">
+                        <div class="link-icon">✈️</div>
+                        <div class="link-info">
+                            <h3>Telegram Free</h3>
+                            <p>Canal público com atualizações</p>
+                        </div>
+                        <div class="link-arrow">→</div>
+                    </a>
+
+                    <!-- PRIVACY FREE -->
+                    <a href="https://privacy.com.br/checkout/barbieprethafree" target="_blank" class="link-button link-privacy" id="btn_privacy_free">
+                        <div class="link-icon">🔐</div>
+                        <div class="link-info">
+                            <h3>Privacy Free</h3>
+                            <p>Acesso gratuito com limitações</p>
+                        </div>
+                        <div class="link-arrow">→</div>
+                    </a>
+                </div>
+            </section>
+
+            <!-- UPGRADE CTA -->
+            <section class="upgrade-section">
+                <h2>Quer mais conteúdo?</h2>
+                <p>Conheça nossos planos premium com acesso exclusivo e ilimitado</p>
+                <a href="premium.html" class="btn btn-primary">Explorar Premium</a>
+            </section>
+        </main>
+    </div>
+
+    <!-- ANALYTICS -->
+    <script src="js/utm.js"></script>
+    <script src="js/tracking.js"></script>
+    <script src="js/analytics.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            Analytics.trackPageView();
+        });
+    </script>
+</body>
+</html>
