@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hub de Links - Poli (Admin)">
+    <title>Poli | Hub de Links (Admin)</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7GZEWB676K"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-7GZEWB676K');
+    </script>
+
+    <style>
+        .admin-mode-badge {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .link-item {
+            position: relative;
+        }
+
+        .admin-buttons {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            gap: 8px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .link-item:hover .admin-buttons {
+            opacity: 1;
+        }
+
+        .admin-btn {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            white-space: nowrap;
+        }
+
+        .btn-toggle {
+            background-color: #10b981;
+        }
+
+        .btn-toggle:hover {
+            background-color: #059669;
+            transform: scale(1.05);
+        }
+
+        .btn-toggle.inactive {
+            background-color: #6b7280;
+        }
+
+        .btn-toggle.inactive:hover {
+            background-color: #4b5563;
+        }
+
+        .btn-edit {
+            background-color: #3b82f6;
+        }
+
+        .btn-edit:hover {
+            background-color: #2563eb;
+            transform: scale(1.05);
+        }
+
+        .btn-delete {
+            background-color: #ef4444;
+        }
+
+        .btn-delete:hover {
+            background-color: #dc2626;
+            transform: scale(1.05);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: 'Poppins', sans-serif;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 25px;
+        }
+
+        .modal-btn {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: white;
+        }
+
+        .modal-btn-save {
+            background-color: #667eea;
+        }
+
+        .modal-btn-save:hover {
+            background-color: #5568d3;
+            transform: translateY(-2px);
+        }
+
+        .modal-btn-cancel {
+            background-color: #9ca3af;
+        }
+
+        .modal-btn-cancel:hover {
+            background-color: #6b7280;
+        }
+
+        .close-modal {
+            cursor: pointer;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            color: #999;
+            transition: color 0.3s ease;
+        }
+
+        .close-modal:hover {
+            color: #333;
+        }
+
+        .bottom-toolbar {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            z-index: 999;
+        }
+
+        .toolbar-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: white;
+        }
+
+        .toolbar-btn-save {
+            background-color: #10b981;
+        }
+
+        .toolbar-btn-save:hover {
+            background-color: #059669;
+        }
+
+        .toolbar-btn-exit {
+            background-color: #6b7280;
+        }
+
+        .toolbar-btn-exit:hover {
+            background-color: #4b5563;
+        }
+
+        .stats-badge {
+            background-color: #f3f4f6;
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .floating-container {
+            padding-bottom: 80px;
+        }
+
+        @media (max-width: 768px) {
+            .admin-buttons {
+                position: static;
+                opacity: 1;
+                transform: none;
+                margin-top: 10px;
+                flex-wrap: wrap;
+            }
+
+            .bottom-toolbar {
+                width: calc(100% - 40px);
+                flex-direction: column;
+            }
+
+            .link-item {
+                padding-bottom: 15px;
+            }
+        }
+    </style>
+</head>
+<body style="background-image: url('assets/promo-banner.jpg');">
+
+    <!-- MODO ADMIN BADGE -->
+    <div class="admin-mode-badge">🛠️ MODO ADMIN</div>
+
+    <!-- OVERLAY ESCURO SOBRE A IMAGEM -->
+    <div class="overlay"></div>
+
+    <!-- CONTAINER COM TUDO FLUTUANDO -->
+    <div class="floating-container">
+        <!-- HERO CONTENT (PERFIL + TEXTO) -->
+        <div class="hero-content">
+            <!-- CÍRCULO COM FOTO -->
+            <div class="profile-badge">
+                <img src="assets/profile.jpg" alt="Poli" class="profile-badge-img">
+            </div>
+
+            <h1 class="hero-name">Poli</h1>
+            <p class="hero-title">Criadora de conteúdo | Lifestyle</p>
+            <p class="hero-bio">24 anos, mineirinha e amo viajar!<br>Faço aqueles vídeos pra gente grande 🍑</p>
+            <p class="hero-cta">Quer conversar comigo agora ou me chamar pra jantar?</p>
+        </div>
+
+        <!-- LINKS FLUTUANDO -->
+        <div class="links-wrapper" id="links-wrapper">
+            <!-- Links serão carregados dinamicamente via JavaScript -->
+        </div>
+    </div>
+
+    <!-- MODAL DE EDIÇÃO -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeEditModal()">&times;</span>
+            <div class="modal-header">Editar Link</div>
+
+            <div class="form-group">
+                <label>Nome</label>
+                <input type="text" id="editName" placeholder="Nome do link">
+            </div>
+
+            <div class="form-group">
+                <label>Descrição</label>
+                <input type="text" id="editDescription" placeholder="Descrição">
+            </div>
+
+            <div class="form-group">
+                <label>URL</label>
+                <input type="url" id="editUrl" placeholder="https://example.com">
+            </div>
+
+            <div class="form-group">
+                <label>Emoji</label>
+                <input type="text" id="editEmoji" placeholder="🔐" maxlength="2">
+            </div>
+
+            <div class="form-group">
+                <label>Tipo</label>
+                <select id="editType">
+                    <option value="premium">Premium</option>
+                    <option value="free">Free</option>
+                    <option value="social">Social</option>
+                </select>
+            </div>
+
+            <div class="modal-buttons">
+                <button class="modal-btn modal-btn-save" onclick="saveEditLink()">💾 Salvar</button>
+                <button class="modal-btn modal-btn-cancel" onclick="closeEditModal()">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOOLBAR FLUTUANTE -->
+    <div class="bottom-toolbar">
+        <div class="stats-badge">
+            Ativos: <span id="activeCount">0</span> | Inativos: <span id="inactiveCount">0</span>
+        </div>
+        <button class="toolbar-btn toolbar-btn-save" onclick="saveAllChanges()">💾 Salvar Tudo</button>
+        <button class="toolbar-btn toolbar-btn-exit" onclick="exitAdminMode()">❌ Sair do Modo Admin</button>
+    </div>
+
+    <!-- TRACKING -->
+    <script src="js/track.js"></script>
+    <script>
+        let linksData = [];
+        let currentEditingId = null;
+
+        // Carregar links do JSON e renderizar
+        async function loadLinks() {
+            try {
+                const response = await fetch('links.json');
+                linksData = await response.json();
+                renderLinks();
+                updateStats();
+            } catch(error) {
+                console.error('Erro ao carregar links:', error);
+            }
+        }
+
+        function renderLinks() {
+            const linksWrapper = document.getElementById('links-wrapper');
+            linksWrapper.innerHTML = '';
+
+            linksData.forEach(function(link) {
+                const typeClass = link.type === 'premium' ? 'premium' : link.type === 'social' ? 'social' : '';
+
+                const linkElement = document.createElement('div');
+                linkElement.className = 'link-item ' + typeClass;
+                linkElement.innerHTML = `
+                    <div class="link-avatar">
+                        <span>${link.emoji}</span>
+                    </div>
+                    <div class="link-content">
+                        <h3>${link.name}</h3>
+                        <p>${link.description}</p>
+                    </div>
+                    <div class="admin-buttons">
+                        <button class="admin-btn btn-toggle ${link.active ? '' : 'inactive'}"
+                                onclick="toggleLink(${link.id}, event)">
+                            ${link.active ? '✓ Ativo' : '✕ Inativo'}
+                        </button>
+                        <button class="admin-btn btn-edit" onclick="openEditModal(${link.id}, event)">
+                            ✏️ Editar
+                        </button>
+                        <button class="admin-btn btn-delete" onclick="deleteLink(${link.id}, event)">
+                            🗑️ Deletar
+                        </button>
+                    </div>
+                    <div class="link-arrow">›</div>
+                `;
+
+                linksWrapper.appendChild(linkElement);
+            });
+        }
+
+        function toggleLink(id, e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            const link = linksData.find(l => l.id === id);
+            if (link) {
+                link.active = !link.active;
+                renderLinks();
+                updateStats();
+            }
+        }
+
+        function openEditModal(id, e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            const link = linksData.find(l => l.id === id);
+            if (link) {
+                currentEditingId = id;
+                document.getElementById('editName').value = link.name;
+                document.getElementById('editDescription').value = link.description;
+                document.getElementById('editUrl').value = link.url;
+                document.getElementById('editEmoji').value = link.emoji;
+                document.getElementById('editType').value = link.type;
+                document.getElementById('editModal').classList.add('active');
+            }
+        }
+
+        function closeEditModal() {
+            document.getElementById('editModal').classList.remove('active');
+            currentEditingId = null;
+        }
+
+        function saveEditLink() {
+            const link = linksData.find(l => l.id === currentEditingId);
+            if (link) {
+                link.name = document.getElementById('editName').value;
+                link.description = document.getElementById('editDescription').value;
+                link.url = document.getElementById('editUrl').value;
+                link.emoji = document.getElementById('editEmoji').value;
+                link.type = document.getElementById('editType').value;
+
+                renderLinks();
+                closeEditModal();
+                updateStats();
+            }
+        }
+
+        function deleteLink(id, e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            if (confirm('Tem certeza que deseja deletar este link?')) {
+                linksData = linksData.filter(l => l.id !== id);
+                renderLinks();
+                updateStats();
+            }
+        }
+
+        function updateStats() {
+            const activeCount = linksData.filter(l => l.active).length;
+            const inactiveCount = linksData.filter(l => !l.active).length;
+
+            document.getElementById('activeCount').textContent = activeCount;
+            document.getElementById('inactiveCount').textContent = inactiveCount;
+        }
+
+        function saveAllChanges() {
+            // Salvar no localStorage primeiro para backup
+            localStorage.setItem('linksData', JSON.stringify(linksData));
+
+            // Criar um arquivo JSON para download
+            const dataStr = JSON.stringify(linksData, null, 2);
+            const dataBlob = new Blob([dataStr], {type: 'application/json'});
+            const url = URL.createObjectURL(dataBlob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'links.json';
+            link.click();
+
+            alert('✅ Arquivo links.json foi baixado!\n\nAgora você precisa:\n1. Fazer upload para GitHub\n2. Ou copiar o conteúdo para seu links.json online');
+        }
+
+        function exitAdminMode() {
+            if (confirm('Deseja sair do modo admin? Suas alterações foram salvas localmente.')) {
+                window.location.href = 'index.html';
+            }
+        }
+
+        // Fechar modal ao clicar fora
+        document.addEventListener('DOMContentLoaded', function() {
+            loadLinks();
+
+            const modal = document.getElementById('editModal');
+            window.onclick = function(event) {
+                if (event.target === modal) {
+                    closeEditModal();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
