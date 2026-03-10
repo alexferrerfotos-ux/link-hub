@@ -12,87 +12,93 @@
 </head>
 <body>
     <div class="container">
-        <!-- HEADER -->
-        <header class="header">
-            <div class="profile-section">
-                <img src="assets/profile.jpg" alt="Poli" class="profile-pic" loading="lazy">
-                <h1 class="name">Poli</h1>
-                <p class="bio">Criadora de conteúdo | Lifestyle | +18</p>
-            </div>
-
-            <!-- BUTTONS CONTAINER -->
-            <div class="buttons-container">
-                <a href="premium.html" class="btn btn-primary" id="btn_nav_premium">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                    </svg>
-                    <span>Premium</span>
-                </a>
-                <a href="free.html" class="btn btn-secondary" id="btn_nav_free">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                    </svg>
-                    <span>Gratuito</span>
-                </a>
+        <!-- HEADER COM FOTO -->
+        <header class="header-foto">
+            <div class="foto-bg" style="background-image: url('assets/promo-banner.jpg');">
+                <div class="overlay"></div>
+                <div class="profile-content">
+                    <div class="profile-pic-container">
+                        <img src="assets/profile.jpg" alt="Poli" class="profile-pic">
+                    </div>
+                    <h1 class="name">Poli</h1>
+                    <p class="title">Criadora de conteúdo | Lifestyle</p>
+                    <p class="bio">24 anos, mineirinha e amo viajar!<br>Faço aqueles vídeos pra gente grande 🍑</p>
+                    <p class="cta">Quer conversar comigo agora ou me chamar pra jantar?</p>
+                </div>
             </div>
         </header>
 
-        <!-- CONTEÚDO PRINCIPAL -->
+        <!-- SEÇÃO DE LINKS -->
         <main class="main-content">
-            <!-- SEÇÃO DE PROMOÇÃO -->
-            <section class="promo-section">
-                <div class="promo-image">
-                    <img src="assets/promo-banner.jpg" alt="Promoção" loading="lazy">
-                </div>
-                <p class="promo-text">Acesse conteúdo exclusivo e descubra tudo que tenho de novo para você</p>
-            </section>
+            <section class="links-section">
+                <a href="https://privacy.com.br/checkout/barbiepretha" target="_blank" class="link-card premium">
+                    <div class="link-icon">🔐</div>
+                    <div class="link-details">
+                        <h3>PRIVACY</h3>
+                        <p>50% OFF - Restam 3 vagas!</p>
+                    </div>
+                </a>
 
-            <!-- LINKS RÁPIDOS -->
-            <section class="quick-links">
-                <h2>Acesso Rápido</h2>
-                <div class="links-grid">
-                    <a href="links.html" class="quick-link" id="btn_view_all_links">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
-                            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-                        </svg>
-                        <span>Ver Todos os Links</span>
-                    </a>
-                </div>
+                <a href="https://t.me/PoliVIP_bot" target="_blank" class="link-card premium">
+                    <div class="link-icon">✈️</div>
+                    <div class="link-details">
+                        <h3>TELEGRAM VIP</h3>
+                        <p>50% OFF - Restam 5 vagas!</p>
+                    </div>
+                </a>
+
+                <a href="https://onlyfans.com/impoliferreira" target="_blank" class="link-card premium">
+                    <div class="link-icon">OF</div>
+                    <div class="link-details">
+                        <h3>ONLYFANS</h3>
+                        <p>50% OFF - Restam 5 vagas!</p>
+                    </div>
+                </a>
+
+                <a href="https://t.me/+UK1ygrfRnHE4ODc5" target="_blank" class="link-card free">
+                    <div class="link-icon">✈️</div>
+                    <div class="link-details">
+                        <h3>TELEGRAM FREE</h3>
+                        <p>Canal público - Atualizações</p>
+                    </div>
+                </a>
+
+                <a href="https://privacy.com.br/checkout/barbieprethafree" target="_blank" class="link-card free">
+                    <div class="link-icon">🔐</div>
+                    <div class="link-details">
+                        <h3>PRIVACY FREE</h3>
+                        <p>Acesso gratuito com limite</p>
+                    </div>
+                </a>
+
+                <a href="https://www.instagram.com/soupoli.ferreira" target="_blank" class="link-card social">
+                    <div class="link-icon">📱</div>
+                    <div class="link-details">
+                        <h3>INSTAGRAM</h3>
+                        <p>Siga meu perfil</p>
+                    </div>
+                </a>
             </section>
         </main>
     </div>
 
-    <!-- ANALYTICS TRACKER -->
     <script src="js/utm.js"></script>
     <script src="js/tracking.js"></script>
     <script src="js/analytics.js"></script>
 
     <script>
-        // Registrar visualização de página
         document.addEventListener('DOMContentLoaded', function() {
             Analytics.trackPageView();
         });
 
-        // Rastrear navegação
-        document.querySelectorAll('.btn, .quick-link').forEach(btn => {
-            btn.addEventListener('click', function() {
-                Analytics.trackEvent('navigation', {
-                    button_id: this.id,
-                    button_name: this.textContent.trim()
+        document.querySelectorAll('.link-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                const title = this.querySelector('h3').textContent;
+                Analytics.trackEvent('link_click', {
+                    button_name: title,
+                    link_type: this.classList.contains('premium') ? 'premium' : this.classList.contains('free') ? 'free' : 'social'
                 });
             });
-        });
-
-        // Rastrear scroll
-        let scrollTracked = false;
-        window.addEventListener('scroll', function() {
-            if (!scrollTracked && window.scrollY > 100) {
-                Analytics.trackEvent('scroll', {
-                    scroll_depth: Math.min(100, Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100))
-                });
-                scrollTracked = true;
-            }
         });
     </script>
 </body>
