@@ -1,6 +1,7 @@
 var Tracking = {
     config: {
-        endpoint: 'COLOQUE_AQUI_A_URL_DO_SEU_GOOGLE_APPS_SCRIPT'
+        endpoint: https://script.google.com/macros/s/AKfycbxSk9O5XGFDwd3vRmh-jf6tSVMRVLw4Tov4YTF5eJHrzv3ywsIlZZDDq-UNuMfIvGndjg/exec
+
     },
 
     getDeviceInfo: function() {
