@@ -8,6 +8,27 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <!-- Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-7GZEWB676K"></script>
+        <script>
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', 'G-7GZEWB676K');
+
+                  // Rastrear cliques em links
+                  document.addEventListener('click', function(e) {
+                              if (e.target.tagName === 'A' || e.target.closest('a')) {
+                                            var link = e.target.tagName === 'A' ? e.target : e.target.closest('a');
+                                            var text = link.textContent.trim();
+                                            gtag('event', 'link_click', {
+                                                            'event_category': 'link',
+                                                            'event_label': text,
+                                                            'value': 1
+                                            });
+                              }
+                  });
+        </script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body style="background-image: url('assets/promo-banner.jpg');">
