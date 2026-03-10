@@ -4,7 +4,8 @@
 
 const Tracking = {
     config: {
-        endpoint: 'COLOQUE_AQUI_A_URL_DO_SEU_GOOGLE_APPS_SCRIPT'
+        endpoint: 'https://script.google.com/macros/s/AKfycbxSk9O5XGFDwd3vRmh-jf6tSVMRVLw4Tov4YTF5eJHrzv3ywsIlZZDDq-UNuMfIvGndjg/exec
+'
     },
 
     getDeviceInfo: function() {
@@ -32,7 +33,8 @@ const Tracking = {
     },
 
     track: function(linkName, linkType, description) {
-        if (!this.config.endpoint || this.config.endpoint.indexOf('COLOQUE') > -1) {
+        if (!this.config.endpoint || this.config.endpoint.indexOf('https://script.google.com/macros/s/AKfycbxSk9O5XGFDwd3vRmh-jf6tSVMRVLw4Tov4YTF5eJHrzv3ywsIlZZDDq-UNuMfIvGndjg/exec
+') > -1) {
             console.warn('Analytics endpoint nao configurado');
             return;
         }
