@@ -164,14 +164,15 @@
         }
 
         .toggle-btn {
-            padding: 8px 12px;
+            padding: 6px 10px;
             border: none;
             border-radius: 6px;
             cursor: pointer;
             font-family: 'Poppins', sans-serif;
             font-weight: 600;
-            font-size: 0.85em;
+            font-size: 0.75em;
             transition: all 0.3s;
+            white-space: nowrap;
         }
 
         .toggle-btn.active {
@@ -187,6 +188,38 @@
         .toggle-btn:hover {
             transform: scale(1.05);
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .action-btn {
+            padding: 6px 10px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 0.75em;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .action-btn.edit {
+            background: #2196F3;
+            color: white;
+        }
+
+        .action-btn.edit:hover {
+            background: #0b7dda;
+            transform: scale(1.05);
+        }
+
+        .action-btn.delete {
+            background: #f44336;
+            color: white;
+        }
+
+        .action-btn.delete:hover {
+            background: #da190b;
+            transform: scale(1.05);
         }
 
         footer {
@@ -403,8 +436,19 @@
                     <div class="link-controls">
                         <button class="toggle-btn ${isActive ? 'active' : 'inactive'}"
                                 onclick="toggleLink(${link.id})"
-                                id="toggle-${link.id}">
+                                id="toggle-${link.id}"
+                                title="${isActive ? 'Desativar' : 'Ativar'}">
                             ${isActive ? '✓ Ativo' : '✕ Inativo'}
+                        </button>
+                        <button class="action-btn edit"
+                                onclick="editLink(${link.id})"
+                                title="Editar link">
+                            ✏️ Editar
+                        </button>
+                        <button class="action-btn delete"
+                                onclick="deleteLink(${link.id})"
+                                title="Deletar link">
+                            🗑️ Delete
                         </button>
                     </div>
                 `;
@@ -420,6 +464,38 @@
             if (link) {
                 link.active = !link.active;
                 renderizarLinks();
+            }
+        }
+
+        function editLink(id) {
+            const link = linksData.find(l => l.id === id);
+            if (link) {
+                const newName = prompt('Nome do link:', link.name);
+                if (newName !== null) {
+                    const newDescription = prompt('Descrição:', link.description);
+                    if (newDescription !== null) {
+                        const newUrl = prompt('URL:', link.url);
+                        if (newUrl !== null) {
+                            link.name = newName;
+                            link.description = newDescription;
+                            link.url = newUrl;
+                            renderizarLinks();
+                            alert('✅ Link atualizado!');
+                        }
+                    }
+                }
+            }
+        }
+
+        function deleteLink(id) {
+            const link = linksData.find(l => l.id === id);
+            if (link) {
+                const confirmar = confirm(`Tem certeza que quer deletar "${link.name}"?\n\n(Não será possível desfazer!)`);
+                if (confirmar) {
+                    linksData = linksData.filter(l => l.id !== id);
+                    renderizarLinks();
+                    alert('✅ Link deletado!');
+                }
             }
         }
 
