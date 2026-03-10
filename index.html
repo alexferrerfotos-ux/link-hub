@@ -8,28 +8,16 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <!-- Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-7GZEWB676K"></script>
-        <script>
-                  window.dataLayer = window.dataLayer || [];
-                  function gtag(){dataLayer.push(arguments);}
-                  gtag('js', new Date());
-                  gtag('config', 'G-7GZEWB676K');
-
-                  // Rastrear cliques em links
-                  document.addEventListener('click', function(e) {
-                              if (e.target.tagName === 'A' || e.target.closest('a')) {
-                                            var link = e.target.tagName === 'A' ? e.target : e.target.closest('a');
-                                            var text = link.textContent.trim();
-                                            gtag('event', 'link_click', {
-                                                            'event_category': 'link',
-                                                            'event_label': text,
-                                                            'value': 1
-                                            });
-                              }
-                  });
-        </script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7GZEWB676K"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-7GZEWB676K');
+    </script>
 </head>
 <body style="background-image: url('assets/promo-banner.jpg');">
 
@@ -52,90 +40,61 @@
         </div>
 
         <!-- LINKS FLUTUANDO -->
-        <div class="links-wrapper">
-            <!-- PRIVACY VIP -->
-            <a href="https://privacy.com.br/checkout/barbiepretha" target="_blank" class="link-item premium">
-                <div class="link-avatar">
-                    <span>🔐</span>
-                </div>
-                <div class="link-content">
-                    <h3>PRIVACY</h3>
-                    <p>50% OFF - Restam 3 vagas!</p>
-                </div>
-                <div class="link-arrow">›</div>
-            </a>
-
-            <!-- TELEGRAM VIP -->
-            <a href="https://t.me/PoliVIP_bot" target="_blank" class="link-item premium">
-                <div class="link-avatar">
-                    <span>✈️</span>
-                </div>
-                <div class="link-content">
-                    <h3>TELEGRAM VIP</h3>
-                    <p>50% OFF - Restam 5 vagas!</p>
-                </div>
-                <div class="link-arrow">›</div>
-            </a>
-
-            <!-- ONLYFANS -->
-            <a href="https://onlyfans.com/impoliferreira" target="_blank" class="link-item premium">
-                <div class="link-avatar">
-                    <span>OF</span>
-                </div>
-                <div class="link-content">
-                    <h3>ONLYFANS</h3>
-                    <p>50% OFF - Restam 5 vagas!</p>
-                </div>
-                <div class="link-arrow">›</div>
-            </a>
-
-            <!-- TELEGRAM FREE -->
-            <a href="https://t.me/+UK1ygrfRnHE4ODc5" target="_blank" class="link-item">
-                <div class="link-avatar">
-                    <span>✈️</span>
-                </div>
-                <div class="link-content">
-                    <h3>TELEGRAM</h3>
-                    <p>Canal público - Atualizações</p>
-                </div>
-                <div class="link-arrow">›</div>
-            </a>
-
-            <!-- PRIVACY FREE -->
-            <a href="https://privacy.com.br/checkout/barbieprethafree" target="_blank" class="link-item">
-                <div class="link-avatar">
-                    <span>🔐</span>
-                </div>
-                <div class="link-content">
-                    <h3>PRIVACY FREE</h3>
-                    <p>Acesso gratuito com limite</p>
-                </div>
-                <div class="link-arrow">›</div>
-            </a>
-
-            <!-- INSTAGRAM -->
-            <a href="https://www.instagram.com/soupoli.ferreira" target="_blank" class="link-item social">
-                <div class="link-avatar">
-                    <span>📱</span>
-                </div>
-                <div class="link-content">
-                    <h3>INSTAGRAM</h3>
-                    <p>Siga meu perfil</p>
-                </div>
-                <div class="link-arrow">›</div>
-            </a>
+        <div class="links-wrapper" id="links-wrapper">
+            <!-- Links serão carregados dinamicamente via JavaScript -->
         </div>
     </div>
 
-     <!-- TRACKING -->
+    <!-- TRACKING -->
     <script src="js/track.js"></script>
     <script>
-        document.querySelectorAll('.link-item').forEach(function(item) {
-            item.addEventListener('click', function(e) {
-                var title = this.querySelector('h3').textContent;
-                var description = this.querySelector('p').textContent;
-                var linkType = this.classList.contains('premium') ? 'premium' : this.classList.contains('social') ? 'social' : 'free';
-                Tracking.track(title, linkType, description);
-            });
-        });
+        // Carregar links do JSON e renderizar
+        async function loadLinks() {
+            try {
+                const response = await fetch('links.json');
+                const links = await response.json();
+                const linksWrapper = document.getElementById('links-wrapper');
+
+                links.forEach(function(link) {
+                    // Pular links desativados
+                    if (!link.active) {
+                        return;
+                    }
+
+                    const typeClass = link.type === 'premium' ? 'premium' : link.type === 'social' ? 'social' : '';
+
+                    const linkElement = document.createElement('a');
+                    linkElement.href = link.url;
+                    linkElement.target = '_blank';
+                    linkElement.className = 'link-item ' + typeClass;
+                    linkElement.innerHTML = `
+                        <div class="link-avatar">
+                            <span>${link.emoji}</span>
+                        </div>
+                        <div class="link-content">
+                            <h3>${link.name}</h3>
+                            <p>${link.description}</p>
+                        </div>
+                        <div class="link-arrow">›</div>
+                    `;
+
+                    // Adicionar evento de rastreamento
+                    linkElement.addEventListener('click', function(e) {
+                        var title = this.querySelector('h3').textContent;
+                        var description = this.querySelector('p').textContent;
+                        var linkType = this.classList.contains('premium') ? 'premium' : this.classList.contains('social') ? 'social' : 'free';
+                        Tracking.track(title, linkType, description);
+                    });
+
+                    linksWrapper.appendChild(linkElement);
+                });
+            } catch(error) {
+                console.error('Erro ao carregar links:', error);
+            }
+        }
+
+        // Carregar links quando o DOM estiver pronto
+        document.addEventListener('DOMContentLoaded', loadLinks);
     </script>
+</body>
+</html>

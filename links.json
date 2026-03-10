@@ -1,50 +1,56 @@
 [
-    {
-          "id": 1,
-          "name": "PRIVACY",
-          "emoji": "🔐",
-          "description": "50% OFF - Restam 3 vagas!",
-          "url": "https://privacy.com.br/checkout/barbiepretha",
-          "type": "premium"
-    },
-    {
-          "id": 2,
-          "name": "TELEGRAM VIP",
-          "emoji": "✈️",
-          "description": "50% OFF - Restam 5 vagas!",
-          "url": "https://t.me/+xxxxxxxx",
-          "type": "premium"
-    },
-    {
-          "id": 3,
-          "name": "ONLYFANS",
-          "emoji": "❤️",
-          "description": "50% OFF - Restam 5 vagas!",
-          "url": "https://onlyfans.com/impoliferreira",
-          "type": "premium"
-    },
-    {
-          "id": 4,
-          "name": "TELEGRAM",
-          "emoji": "✈️",
-          "description": "Canal público - Atualizações",
-          "url": "https://t.me/xxxxxxxx",
-          "type": "free"
-    },
-    {
-          "id": 5,
-          "name": "PRIVACY FREE",
-          "emoji": "🔐",
-          "description": "Acesso gratuito com limite",
-          "url": "https://privacy.com.br/free",
-          "type": "free"
-    },
-    {
-          "id": 6,
-          "name": "INSTAGRAM",
-          "emoji": "📱",
-          "description": "Siga meu perfil",
-          "url": "https://instagram.com/impoliferreira",
-          "type": "social"
-    }
+  {
+    "id": 1,
+    "name": "PRIVACY",
+    "emoji": "🔐",
+    "description": "50% OFF - Restam 3 vagas!",
+    "url": "https://privacy.com.br/checkout/barbiepretha",
+    "type": "premium",
+    "active": true
+  },
+  {
+    "id": 2,
+    "name": "TELEGRAM VIP",
+    "emoji": "✈️",
+    "description": "50% OFF - Restam 5 vagas!",
+    "url": "https://t.me/PoliVIP_bot",
+    "type": "premium",
+    "active": true
+  },
+  {
+    "id": 3,
+    "name": "ONLYFANS",
+    "emoji": "❤️",
+    "description": "50% OFF - Restam 5 vagas!",
+    "url": "https://onlyfans.com/impoliferreira",
+    "type": "premium",
+    "active": true
+  },
+  {
+    "id": 4,
+    "name": "TELEGRAM",
+    "emoji": "✈️",
+    "description": "Canal público - Atualizações",
+    "url": "https://t.me/+UK1ygrfRnHE4ODc5",
+    "type": "free",
+    "active": true
+  },
+  {
+    "id": 5,
+    "name": "PRIVACY FREE",
+    "emoji": "🔐",
+    "description": "Acesso gratuito com limite",
+    "url": "https://privacy.com.br/checkout/barbieprethafree",
+    "type": "free",
+    "active": true
+  },
+  {
+    "id": 6,
+    "name": "INSTAGRAM",
+    "emoji": "📱",
+    "description": "Siga meu perfil",
+    "url": "https://www.instagram.com/soupoli.ferreira",
+    "type": "social",
+    "active": true
+  }
 ]
