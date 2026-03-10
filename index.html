@@ -106,21 +106,15 @@
         </div>
     </div>
 
-    <!-- TRACKING SIMPLES -->
+     <!-- TRACKING SIMPLES -->
     <script src="js/tracking_simples.js"></script>
 
     <script>
-        // Configurar a URL do Google Apps Script
-        Tracking.config.endpoint = https://script.google.com/macros/s/AKfycbxSk9O5XGFDwd3vRmh-jf6tSVMRVLw4Tov4YTF5eJHrzv3ywsIlZZDDq-UNuMfIvGndjg/exec
-;
-
-        // Rastrear cliques nos links
-        document.querySelectorAll('.link-item').forEach(item => {
+        document.querySelectorAll('.link-item').forEach(function(item) {
             item.addEventListener('click', function(e) {
-                const title = this.querySelector('h3').textContent;
-                const description = this.querySelector('p').textContent;
-                const linkType = this.classList.contains('premium') ? 'premium' : this.classList.contains('social') ? 'social' : 'free';
-
+                var title = this.querySelector('h3').textContent;
+                var description = this.querySelector('p').textContent;
+                var linkType = this.classList.contains('premium') ? 'premium' : this.classList.contains('social') ? 'social' : 'free';
                 Tracking.track(title, linkType, description);
             });
         });
